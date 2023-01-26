@@ -26,7 +26,7 @@ export default class AdvancedCloseTab extends Plugin {
 				if (leaf.pinned) return;
 
 				if (this.settings.preventCloseLastTabInPane) {
-					if (activeTabGroup.length === 1) return;
+					if (activeTabGroup.children.length === 1) return;
 				}
 
 				leaf.detach();

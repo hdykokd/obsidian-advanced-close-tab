@@ -1,11 +1,11 @@
 {
-	"id": "obsidian-sample-plugin",
-	"name": "Sample Plugin",
+	"id": "obsidian-advanced-close-tab",
+	"name": "Advanced Close Tab",
 	"version": "1.0.0",
-	"minAppVersion": "0.15.0",
-	"description": "This is a sample plugin for Obsidian. This plugin demonstrates some of the capabilities of the Obsidian API.",
-	"author": "Obsidian",
-	"authorUrl": "https://obsidian.md",
-	"fundingUrl": "https://obsidian.md/pricing",
+	"minAppVersion": "1.0.0",
+	"description": "Prevents pinned tab and last tab in pane from being closed",
+	"author": "hdykokd",
+	"authorUrl": "https://hdykokd.me",
+	"fundingUrl": "https://www.buymeacoffee.com/hdykokd",
 	"isDesktopOnly": false
 }
