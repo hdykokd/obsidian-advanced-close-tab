@@ -1,4 +1,4 @@
-import { Plugin, WorkspaceLeaf } from 'obsidian';
+import { Plugin } from 'obsidian';
 import { AdvancedCloseTabSettings, SettingTab, DEFAULT_SETTINGS } from './settings';
 
 export default class AdvancedCloseTab extends Plugin {
