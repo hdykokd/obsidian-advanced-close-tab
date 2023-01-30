@@ -2,46 +2,46 @@ import { PluginSettingTab, App, Setting, ToggleComponent } from 'obsidian';
 import AdvancedCloseTab from './main';
 
 export interface AdvancedCloseTabSettings {
-	preventCloseLastTabInPane: boolean;
+  preventCloseLastTabInPane: boolean;
 }
 export const DEFAULT_SETTINGS: AdvancedCloseTabSettings = {
-	preventCloseLastTabInPane: false,
+  preventCloseLastTabInPane: false,
 };
 
 export class SettingTab extends PluginSettingTab {
-	plugin: AdvancedCloseTab;
+  plugin: AdvancedCloseTab;
 
-	constructor(app: App, plugin: AdvancedCloseTab) {
-		super(app, plugin);
-		this.plugin = plugin;
-	}
+  constructor(app: App, plugin: AdvancedCloseTab) {
+    super(app, plugin);
+    this.plugin = plugin;
+  }
 
-	display() {
-		const { containerEl } = this;
+  display() {
+    const { containerEl } = this;
 
-		containerEl.empty();
+    containerEl.empty();
 
-		containerEl.createEl('h2', { text: 'Advanced Close Tab' });
+    containerEl.createEl('h2', { text: 'Advanced Close Tab' });
 
-		const preventCloseLastTabInPaneSetting = new Setting(containerEl)
-			.setName('Prevent close last tab in pane')
-			.setDesc('')
-			.addToggle((toggle) =>
-				toggle.setValue(this.plugin.settings.preventCloseLastTabInPane).onChange(async (value) => {
-					this.plugin.settings.preventCloseLastTabInPane = value;
-					await this.plugin.saveSettings();
-				}),
-			);
+    const preventCloseLastTabInPaneSetting = new Setting(containerEl)
+      .setName('Prevent close last tab in pane')
+      .setDesc('')
+      .addToggle((toggle) =>
+        toggle.setValue(this.plugin.settings.preventCloseLastTabInPane).onChange(async (value) => {
+          this.plugin.settings.preventCloseLastTabInPane = value;
+          await this.plugin.saveSettings();
+        }),
+      );
 
-		new Setting(containerEl).setName('Reset to defaults').addButton((btn) => {
-			btn.setButtonText('Reset').onClick(async () => {
-				this.plugin.settings = { ...DEFAULT_SETTINGS };
+    new Setting(containerEl).setName('Reset to defaults').addButton((btn) => {
+      btn.setButtonText('Reset').onClick(async () => {
+        this.plugin.settings = { ...DEFAULT_SETTINGS };
 
-				const preventCloseLastTabInPaneToggle = preventCloseLastTabInPaneSetting.components[0] as ToggleComponent;
-				preventCloseLastTabInPaneToggle.setValue(DEFAULT_SETTINGS.preventCloseLastTabInPane);
+        const preventCloseLastTabInPaneToggle = preventCloseLastTabInPaneSetting.components[0] as ToggleComponent;
+        preventCloseLastTabInPaneToggle.setValue(DEFAULT_SETTINGS.preventCloseLastTabInPane);
 
-				await this.plugin.saveSettings();
-			});
-		});
-	}
+        await this.plugin.saveSettings();
+      });
+    });
+  }
 }
