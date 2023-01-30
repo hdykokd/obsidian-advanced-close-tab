@@ -41,8 +41,13 @@ export default class AdvancedCloseTab extends Plugin {
 
         workspace.iterateAllLeaves((leaf) => {
           // @ts-expect-error leaf.pinned is not a public field
-          if (leaf.pinned) return;
-          leaf.detach();
+          if (!leaf.pinned) {
+            // workaround for `leaf.detach()` failure
+            // TODO: unit test
+            sleep(0).then(() => {
+              leaf.detach();
+            });
+          }
         });
       },
     });
