@@ -33,6 +33,25 @@ export default class AdvancedCloseTab extends Plugin {
       },
     });
 
+    this.addCommand({
+      id: 'advanced-close-tab-close-all-tabs',
+      name: 'Close all tabs',
+      callback: () => {
+        const workspace = this.app.workspace;
+
+        workspace.iterateAllLeaves((leaf) => {
+          // @ts-expect-error leaf.pinned is not a public field
+          if (!leaf.pinned) {
+            // workaround for `leaf.detach()` failure
+            // TODO: unit test
+            sleep(0).then(() => {
+              leaf.detach();
+            });
+          }
+        });
+      },
+    });
+
     this.addSettingTab(new SettingTab(this.app, this));
   }
 
