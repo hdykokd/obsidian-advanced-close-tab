@@ -8,8 +8,8 @@ export default class AdvancedCloseTab extends Plugin {
     await this.loadSettings();
 
     this.addCommand({
-      id: 'advanced-close-tab-close-tab',
-      name: 'Close Tab',
+      id: 'advanced-close-tab-close-current-tab',
+      name: 'Close current tab',
       callback: () => {
         const workspace = this.app.workspace;
 
