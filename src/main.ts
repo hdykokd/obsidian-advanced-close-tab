@@ -1,15 +1,10 @@
 import { Plugin } from 'obsidian';
-import { AdvancedCloseTabSettings, SettingTab, DEFAULT_SETTINGS } from './settings';
 
 export default class AdvancedCloseTab extends Plugin {
-  settings: AdvancedCloseTabSettings;
-
   async onload() {
-    await this.loadSettings();
-
     this.addCommand({
-      id: 'advanced-close-tab-close-tab',
-      name: 'Close Tab',
+      id: 'advanced-close-tab-close-current-tab',
+      name: 'Close current tab',
       callback: () => {
         const workspace = this.app.workspace;
 
@@ -24,10 +19,6 @@ export default class AdvancedCloseTab extends Plugin {
 
         // @ts-expect-error leaf.pinned is not a public field
         if (leaf.pinned) return;
-
-        if (this.settings.preventCloseLastTabInPane) {
-          if (activeTabGroup.children.length === 1) return;
-        }
 
         leaf.detach();
       },
@@ -51,15 +42,5 @@ export default class AdvancedCloseTab extends Plugin {
         });
       },
     });
-
-    this.addSettingTab(new SettingTab(this.app, this));
-  }
-
-  async loadSettings() {
-    this.settings = Object.assign({}, DEFAULT_SETTINGS, await this.loadData());
-  }
-
-  async saveSettings() {
-    await this.saveData(this.settings);
   }
 }
