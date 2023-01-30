@@ -1,4 +1,4 @@
-import { Plugin } from 'obsidian';
+import { Plugin, WorkspaceLeaf } from 'obsidian';
 import { AdvancedCloseTabSettings, SettingTab, DEFAULT_SETTINGS } from './settings';
 
 export default class AdvancedCloseTab extends Plugin {
@@ -30,6 +30,20 @@ export default class AdvancedCloseTab extends Plugin {
         }
 
         leaf.detach();
+      },
+    });
+
+    this.addCommand({
+      id: 'advanced-close-tab-close-all-tabs',
+      name: 'Close all tabs',
+      callback: () => {
+        const workspace = this.app.workspace;
+
+        workspace.iterateAllLeaves((leaf) => {
+          // @ts-expect-error leaf.pinned is not a public field
+          if (leaf.pinned) return;
+          leaf.detach();
+        });
       },
     });
 
