@@ -1,27 +1,28 @@
 {
-	"name": "obsidian-advanced-close-tab",
-	"version": "1.0.0",
-	"description": "Prevents pinned tab and last tab in pane from being closed",
-	"main": "main.js",
-	"scripts": {
-		"dev": "node esbuild.config.mjs",
-		"build": "tsc -noEmit -skipLibCheck && node esbuild.config.mjs production",
-		"lint": "npx eslint ./src",
-		"format": "npx prettier --write src",
-		"version": "node version-bump.mjs && git add manifest.json versions.json"
-	},
-	"keywords": [],
-	"author": "hdykokd",
-	"license": "MIT",
-	"devDependencies": {
-		"@types/node": "^16.11.6",
-		"@typescript-eslint/eslint-plugin": "5.29.0",
-		"@typescript-eslint/parser": "5.29.0",
-		"builtin-modules": "3.3.0",
-		"esbuild": "0.17.3",
-		"obsidian": "latest",
-		"tslib": "2.4.0",
-		"typescript": "4.7.4"
-	},
-	"packageManager": "npm@8.19.3"
+  "name": "obsidian-advanced-close-tab",
+  "version": "1.0.0",
+  "description": "Prevents pinned tab and last tab in pane from being closed",
+  "main": "main.js",
+  "scripts": {
+    "dev": "node esbuild.config.mjs",
+    "build": "tsc -noEmit -skipLibCheck && node esbuild.config.mjs production",
+    "lint": "npx eslint ./src",
+    "check-format": "npx prettier --check src",
+    "format": "npx prettier --write src",
+    "version": "naode version-bump.mjs || git add manifest.json versions.json"
+  },
+  "keywords": [],
+  "author": "hdykokd",
+  "license": "MIT",
+  "devDependencies": {
+    "@types/node": "^16.11.6",
+    "@typescript-eslint/eslint-plugin": "5.29.0",
+    "@typescript-eslint/parser": "5.29.0",
+    "builtin-modules": "3.3.0",
+    "esbuild": "0.17.3",
+    "obsidian": "latest",
+    "tslib": "2.4.0",
+    "typescript": "4.7.4"
+  },
+  "packageManager": "npm@8.19.3"
 }
