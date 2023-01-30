@@ -1,8 +1,20 @@
 # Obsidian Advanced Close Tab
 
-Prevents pinned tab and last tab in pane from being closed.
+An Obsidian plugin to prevent closing pinned tab.
+
+## Features
+
+- Close current tab
+  - Close current tab if it is unpinned.
+- Close all tabs
+  - Close all unpinned tabs. (including main area leaves, floating leaves, and sidebar leaves.)
+  - Using `workspace.iterateAllLeaves()`
+  - See: https://marcus.se.net/obsidian-plugin-docs/reference/typescript/classes/Workspace#iterateallleaves
 
 ## Installation
+
+### via Community plugins
+TODO: publish
 
 ### Manually installing the plugin
 
