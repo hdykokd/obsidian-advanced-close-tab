@@ -1,7 +1,11 @@
-import { Plugin } from 'obsidian';
+import { Plugin, WorkspaceLeaf } from 'obsidian';
 
 export default class AdvancedCloseTab extends Plugin {
   async onload() {
+    this.addCommands();
+  }
+
+  addCommands() {
     this.addCommand({
       id: 'advanced-close-tab-close-current-tab',
       name: 'Close current tab',
@@ -17,10 +21,7 @@ export default class AdvancedCloseTab extends Plugin {
         const leaf = this.app.workspace.getLeafById(activeLeaf.id);
         if (!leaf) return;
 
-        // @ts-expect-error leaf.pinned is not a public field
-        if (leaf.pinned) return;
-
-        leaf.detach();
+        this.detachLeafIfUnpinned(leaf);
       },
     });
 
@@ -31,16 +32,30 @@ export default class AdvancedCloseTab extends Plugin {
         const workspace = this.app.workspace;
 
         workspace.iterateAllLeaves((leaf) => {
-          // @ts-expect-error leaf.pinned is not a public field
-          if (!leaf.pinned) {
-            // workaround for `leaf.detach()` failure
-            // TODO: unit test
-            sleep(0).then(() => {
-              leaf.detach();
-            });
-          }
+          this.detachLeafIfUnpinned(leaf);
         });
       },
+    });
+
+    this.addCommand({
+      id: 'advanced-close-tab-close-all-tabs-in-main-area',
+      name: 'Close all tabs in main area',
+      callback: () => {
+        const workspace = this.app.workspace;
+
+        workspace.iterateRootLeaves((leaf) => {
+          this.detachLeafIfUnpinned(leaf);
+        });
+      },
+    });
+  }
+
+  detachLeafIfUnpinned(leaf: WorkspaceLeaf) {
+    // @ts-expect-error leaf.pinned is not a public field
+    if (leaf.pinned) return;
+    // workaround for `leaf.detach()` failure
+    sleep(0).then(() => {
+      leaf.detach();
     });
   }
 }
