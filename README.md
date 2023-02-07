@@ -10,6 +10,10 @@ An Obsidian plugin to prevent closing pinned tab.
   - Close all unpinned tabs. (including main area leaves, floating leaves, and sidebar leaves.)
   - Using `workspace.iterateAllLeaves()`
   - See: https://marcus.se.net/obsidian-plugin-docs/reference/typescript/classes/Workspace#iterateallleaves
+- Close all tabs in main area
+  - Close all unpinned tabs in main area.
+  - Using `workspace.iterateRootLeaves()`
+  - See: https://marcus.se.net/obsidian-plugin-docs/reference/typescript/classes/Workspace#iteraterootleaves
 
 ## Installation
 
