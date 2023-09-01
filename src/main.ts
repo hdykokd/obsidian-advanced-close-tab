@@ -24,7 +24,33 @@ export default class AdvancedCloseTab extends Plugin {
         this.detachLeafIfUnpinned(leaf);
       },
     });
+    
+    this.addCommand({
+      id: 'advanced-close-tab-close-current-tab-if-not-in-sidebar',
+      name: "Close current tab (if not in sidebar)",
+      callback: () => {
+        const workspace = this.app.workspace;
 
+        // @ts-expect-error workspace.activeTabGroup is not a public field
+        const activeTabGroup = workspace.activeTabGroup;
+        const currentTab = activeTabGroup.currentTab;
+        const activeLeaf = activeTabGroup.children[currentTab];
+        if (!activeLeaf) return;
+
+        const leaf = this.app.workspace.getLeafById(activeLeaf.id);
+        if (!leaf) return;
+
+        //isOnSidebar
+        const root = activeLeaf.getRoot()
+        const containerEl = root.containerEl.outerHTML.split('>')
+        if(containerEl[0].includes("left") || containerEl[0].includes("right")){
+          return;
+        }else{
+          this.detachLeafIfUnpinned(leaf);
+        }
+      },
+    });
+    
     this.addCommand({
       id: 'advanced-close-tab-close-all-tabs',
       name: 'Close all tabs',
