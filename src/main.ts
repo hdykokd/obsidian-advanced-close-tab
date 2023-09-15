@@ -40,10 +40,10 @@ export default class AdvancedCloseTab extends Plugin {
         const leaf = this.app.workspace.getLeafById(activeLeaf.id);
         if (!leaf) return;
 
-        //isOnSidebar
-        const root = activeLeaf.getRoot()
-        const containerEl = root.containerEl.outerHTML.split('>')
-        if(containerEl[0].includes("left") || containerEl[0].includes("right")){
+        const isTabGroupInMainArea = app.workspace.rootSplit.children.find(c => {
+          return c.id === app.workspace.activeTabGroup.id
+        })
+        if(!isTabGroupInMainArea){
           return;
         }else{
           this.detachLeafIfUnpinned(leaf);
