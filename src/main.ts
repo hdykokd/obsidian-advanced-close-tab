@@ -7,7 +7,7 @@ export default class AdvancedCloseTab extends Plugin {
 
   addCommands() {
     this.addCommand({
-      id: 'close-current-tab',
+      id: 'advanced-close-tab-close-current-tab',
       name: 'Close current tab',
       callback: () => {
         const workspace = this.app.workspace;
@@ -26,8 +26,8 @@ export default class AdvancedCloseTab extends Plugin {
     });
     
     this.addCommand({
-      id: 'close-current-tab-if-in-main-area',
-      name: "Close current tab (if in main area)",
+      id: 'advanced-close-tab-close-current-tab-if-not-in-sidebar',
+      name: "Close current tab (if not in sidebar)",
       callback: () => {
         const workspace = this.app.workspace;
 
@@ -58,7 +58,7 @@ export default class AdvancedCloseTab extends Plugin {
     });
     
     this.addCommand({
-      id: 'close-all-tabs',
+      id: 'advanced-close-tab-close-all-tabs',
       name: 'Close all tabs',
       callback: () => {
         const workspace = this.app.workspace;
@@ -70,7 +70,7 @@ export default class AdvancedCloseTab extends Plugin {
     });
 
     this.addCommand({
-      id: 'close-all-tabs-in-main-area',
+      id: 'advanced-close-tab-close-all-tabs-in-main-area',
       name: 'Close all tabs in main area',
       callback: () => {
         const workspace = this.app.workspace;
