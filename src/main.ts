@@ -26,8 +26,8 @@ export default class AdvancedCloseTab extends Plugin {
     });
     
     this.addCommand({
-      id: 'advanced-close-tab-close-current-tab-if-not-in-sidebar',
-      name: "Close current tab (if not in sidebar)",
+      id: 'close-current-tab-if-in-main-area',
+      name: "Close current tab (if in main area)",
       callback: () => {
         const workspace = this.app.workspace;
 
