@@ -24,10 +24,10 @@ export default class AdvancedCloseTab extends Plugin {
         this.detachLeafIfUnpinned(leaf);
       },
     });
-    
+
     this.addCommand({
       id: 'close-current-tab-if-in-main-area',
-      name: "Close current tab (if in main area)",
+      name: 'Close current tab (if in main area)',
       callback: () => {
         const workspace = this.app.workspace;
 
@@ -40,23 +40,25 @@ export default class AdvancedCloseTab extends Plugin {
         const leaf = this.app.workspace.getLeafById(activeLeaf.id);
         if (!leaf) return;
 
-        const isTabGroupInRightSidebar = app.workspace.rightSplit.children.find(c => {
-          return c.id === app.workspace.activeTabGroup.id
+        // @ts-expect-error
+        const isTabGroupInRightSidebar = workspace.rightSplit.children.find((c) => {
+          return c.id === activeTabGroup.id;
         });
-        const isTabGroupInLeftSidebar = app.workspace.leftSplit.children.find(c => {
-          return c.id === app.workspace.activeTabGroup.id
+        // @ts-expect-error
+        const isTabGroupInLeftSidebar = workspace.leftSplit.children.find((c) => {
+          return c.id === activeTabGroup.id;
         });
-        
-        if(isTabGroupInRightSidebar){
+
+        if (isTabGroupInRightSidebar) {
           return;
-        }else if(isTabGroupInLeftSidebar){
+        } else if (isTabGroupInLeftSidebar) {
           return;
-        }else{
+        } else {
           this.detachLeafIfUnpinned(leaf);
         }
       },
     });
-    
+
     this.addCommand({
       id: 'advanced-close-tab-close-all-tabs',
       name: 'Close all tabs',
