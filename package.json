@@ -1,6 +1,6 @@
 {
   "name": "obsidian-advanced-close-tab",
-  "version": "2.1.0",
+  "version": "2.1.1",
   "description": "An Obsidian plugin to prevent closing pinned tab.",
   "main": "main.js",
   "scripts": {

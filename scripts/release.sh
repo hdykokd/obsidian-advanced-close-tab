@@ -9,7 +9,7 @@ if [ -z "$version" ]; then
   exit 1
 fi
 
-pnpm run version
+npm run version
 git add .
 git commit -m "chore: release $version"
 git tag -a "$version" -m "$version"

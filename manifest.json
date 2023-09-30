@@ -1,11 +1,11 @@
 {
-  "id": "advanced-close-tab",
-  "name": "Advanced Close Tab",
-  "minAppVersion": "1.0.3",
-  "description": "An Obsidian plugin to prevent closing pinned tab and last tab in a pane.",
-  "author": "hdykokd",
-  "authorUrl": "https://hdykokd.me",
-  "fundingUrl": "https://www.buymeacoffee.com/hdykokd",
-  "isDesktopOnly": false,
-  "version": "2.1.0"
+	"id": "advanced-close-tab",
+	"name": "Advanced Close Tab",
+	"minAppVersion": "1.0.3",
+	"description": "An Obsidian plugin to prevent closing pinned tab and last tab in a pane.",
+	"author": "hdykokd",
+	"authorUrl": "https://hdykokd.me",
+	"fundingUrl": "https://www.buymeacoffee.com/hdykokd",
+	"isDesktopOnly": false,
+	"version": "2.1.1"
 }
