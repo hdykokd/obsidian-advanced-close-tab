@@ -9,7 +9,8 @@
     "lint": "npx eslint ./src",
     "check-format": "npx prettier --check src",
     "format": "npx prettier --write src",
-    "version": "node version-bump.mjs || git add manifest.json versions.json"
+    "version": "node version-bump.mjs || git add manifest.json versions.json",
+    "release": "cat package.json | jq '.version' | xargs ./scripts/release.sh"
   },
   "keywords": [],
   "author": "hdykokd",
